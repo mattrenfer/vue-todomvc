@@ -1,9 +1,5 @@
 /* These minimal styles make the list look more consistent. */
 
-body {
-    background-color: #ccc;
-}
-
 .completed {
     font-style: italic;
     text-decoration: line-through;
@@ -12,12 +8,4 @@ body {
 
 ul {
     cursor: pointer;
-}
-
-
-.btn-primary {
-    background-color:darkorange !important;
-    color: #2a2a2a !important;
-    font-weight: 600 !important;
-    border-color: #2a2a2a !important;
 }

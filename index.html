@@ -11,7 +11,7 @@
 </head>
 <body class="container col-lg-4">
     <h1 class="mt-5">
-        Matt's Vue Todo
+        Vue TodoMVC
     </h1>
 
     <!-- This div, with the ID "app", is where the application appears when it runs. -->
@@ -23,7 +23,12 @@
 
             <!-- Here the v:on attribute is used, which is used to respond to any event. In this case, when the "click" event happens, it causes the value of showComplete to be changed. It is attached here to the label. -->
             <h4>
-                To Do
+                <label v-on:click="showComplete = !showComplete">
+
+                    <!-- The v-model attribute causes the checkdness of this box to always mirror the application's state  -->
+                    <input type="checkbox" v-model="showComplete">
+                    Show Completed
+                </label>
             </h4>
 
             <!-- This list group contains a Vue repeater.-->
@@ -31,26 +36,6 @@
 
                 <!-- The v-for attribute that we see here repeats whatever tag it is on (in this case, a LI) one time for each element of the referenced list, which in this case is our list. Each repetition, the property has a different value.  -->
                 <li v-for="todo in filteredTodos" class="list-group-item" v-on:click="todo.complete = !todo.complete;">
-                    <label class="form-check-label ml-4">
-                        <input
-                                type="checkbox"
-                                v-model="todo.complete"
-                                class="form-check-input">
-
-                        <!-- v-bind is used to change the value of HTML attributes, in this case the class attribute. -->
-                        <span
-                                v-bind:class="{completed:todo.complete}">
-
-                                <!-- Here we see an example of Vue's {{ }} syntax, which is quite familiar to any Angular or Handlebars users.-->
-                                {{ todo.name }}
-                        </span>
-                    </label>
-                </li>
-
-                <h4 class="mt-3">
-                    Completed
-                </h4>
-                <li v-for="todo in filteredIncompleteTodos" class="list-group-item" v-on:click="todo.complete = !todo.complete;">
                     <label class="form-check-label ml-4">
                         <input
                                 type="checkbox"
@@ -79,7 +64,7 @@
                 <!-- Note the property :disabled. It begins with a colon (:), indicating that Vue should interpret the value as an expression, and not a string.-->
                 <button
                         :disabled="submitIsDisabled"
-                        class="btn btn-primary mt-4">
+                        class="btn btn-primary mt-2">
                     Add Todo
                 </button>
             </form>
